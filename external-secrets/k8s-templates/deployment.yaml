@@ -1,0 +1,37 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: frontend-service
+  namespace: frontend
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: frontend
+      stage: development
+  
+  template:
+    metadata:
+      labels:
+        app: frontend
+        stage: development
+       
+    spec:
+      
+      containers:
+      - name: nodejs-backend
+        image:  Gkemhcs/flask-eso:latest
+
+        envFrom:
+        - secretRef:
+             name : frontend-secret
+        ports:
+        - containerPort: 4000
+        resources:
+          requests:
+            memory: "26Mi"
+            cpu: "50m"
+          limits:
+            memory: "50m"
+           
+        
