@@ -20,7 +20,7 @@ spec:
       
       containers:
       - name: nodejs-backend
-        image:  Gkemhcs/flask-eso:latest
+        image:  gkemhcs/flask-eso:v1
 
         envFrom:
         - secretRef:
